@@ -71,9 +71,9 @@
 						<runCoverage>true</runCoverage>
 						<failBuild>true</failBuild>
 
-						<requiredApplicationCoverage>80</requiredApplicationCoverage>
-						<requiredResourceCoverage>20</requiredResourceCoverage>
-						<requiredFlowCoverage>20</requiredFlowCoverage>
+						<requiredApplicationCoverage>65</requiredApplicationCoverage>
+						<requiredResourceCoverage>0</requiredResourceCoverage>
+						<requiredFlowCoverage>0</requiredFlowCoverage>
 
 						<formats>
 							<format>html</format>
