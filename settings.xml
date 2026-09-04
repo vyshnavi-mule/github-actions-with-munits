@@ -22,6 +22,12 @@
 
 </server>
 
+<server>
+    <id>MuleRepository</id>
+    <username>cummins.nexus</username>
+    <password>2QzSChSDg4npRUXaGEWN</password>    
+</server>
+
 </servers>
 
 <pluginGroups>
