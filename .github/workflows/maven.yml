@@ -48,7 +48,9 @@ jobs:
           -Dclient_id="${{ vars.MULE_CLIENT_ID }}" \
           -Dclient_secret="${{ secrets.MULE_CLIENT_SECRET }}" \
           --file pom.xml \
-          --settings settings.xml
+          --settings settings.xml \
+          -e
+          
 
     - name: Deploy to CloudHub
       if: github.event_name == 'push'
