@@ -49,7 +49,7 @@ jobs:
           -Dclient_secret="${{ secrets.MULE_CLIENT_SECRET }}" \
           --file pom.xml \
           --settings settings.xml \
-          -e
+          -X
           
 
     - name: Deploy to CloudHub
