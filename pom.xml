@@ -6,7 +6,7 @@
 
 	<groupId>d9dee93f-aa33-465e-a098-93f702646dca</groupId>
 	<artifactId>end-end-to-github-actions</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
 	<name>end-end-to-github-actions</name>
