@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="end-to-end-github-actions-flow-test-suite.xml" />
+	<munit:test name="end-to-end-github-actions-flow-test-suite-end-to-end-github-actions-flow-mainTest" doc:id="7c998a6c-d1f7-4200-ad25-b612c9a60d1d" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="c8f7b7b4-1e64-41ab-93aa-82c63b6c0a40" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="end-to-end-github-actions-flow-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="1698a065-929f-41cb-af9d-1028134635d0" >
+				<flow-ref doc:name="Flow-ref to end-to-end-github-actions-flow-main" doc:id="287b32e1-ef75-4733-a4ab-88d949c3adb6" name="end-to-end-github-actions-flow-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="8a2faa49-c414-49f9-8b53-dda9691e1505" type="APIKIT:BAD_REQUEST">
+						<logger level="INFO" doc:name="Logger" doc:id="f515f38e-7e8e-4869-85cd-23f432657955" message='#["bad request"]'/>
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="b0973669-7d46-40f6-9824-4660f6a0d2ae" actual="#[payload.status]" expected='#["FAILURE"]'/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="end-to-end-github-actions-flow-test-suite-end-to-end-github-actions-flow-mainTest1" doc:id="3d13231d-5ea2-40ad-86cd-094516c4ac0a" description="Test" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="e3650cf8-f6f7-4e64-abdc-1243b7489f57" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="end-to-end-github-actions-flow-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="e875b052-d25c-44d7-b9c8-f816e5485929" >
+				<flow-ref doc:name="Flow-ref to end-to-end-github-actions-flow-main" doc:id="c7cc0268-d8e9-4675-9acb-eff4d33daa17" name="end-to-end-github-actions-flow-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="59d48f31-7f43-4ca7-b2d1-a66a7be20309" type="APIKIT:NOT_FOUND" >
+						<logger level="INFO" doc:name="Logger" doc:id="1286854a-0ec9-49cb-8a17-b9305f94ad5b" message='#["bad request"]' />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="c60aa598-66a8-4c58-9853-6d2322d77aa9" actual="#[payload.status]" expected='#["FAILURE"]' />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="end-to-end-github-actions-flow-test-suite-end-to-end-github-actions-flow-mainTest2" doc:id="d0c3e305-82b8-43d5-b7fc-3895b8e79b89" description="Test" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="01a764fd-3d27-40a4-b620-9f868e22a041" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="end-to-end-github-actions-flow-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="a1adad44-c2a5-4d46-bac7-886935a4e665" >
+				<flow-ref doc:name="Flow-ref to end-to-end-github-actions-flow-main" doc:id="da2548b5-bae7-4b62-ac32-7aebd8f0bd37" name="end-to-end-github-actions-flow-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="0a9a55a6-3465-4834-bfec-beaeacb83577" type="APIKIT:METHOD_NOT_ALLOWED" >
+						<logger level="INFO" doc:name="Logger" doc:id="ea7f8b50-4a72-4746-8003-fc920ab48203" message='#["bad request"]' />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="f4bbd4b4-4e4f-4b22-b68b-bfedbaf37cf6" actual="#[payload.status]" expected='#["FAILURE"]' />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="end-to-end-github-actions-flow-test-suite-end-to-end-github-actions-flow-mainTest3" doc:id="22d757b8-07c8-41f9-952a-8b3c392fb927" description="Test" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="b3ed7cd3-1f34-4b00-b861-632a88d28748" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="end-to-end-github-actions-flow-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="18a8c3ab-ed0c-42a1-bd99-be6eb03f203a" >
+				<flow-ref doc:name="Flow-ref to end-to-end-github-actions-flow-main" doc:id="2d68b910-2c96-46e1-9cd0-38d3b93c9877" name="end-to-end-github-actions-flow-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="0df01b2c-7415-438f-9860-a92b9c00575c" type="APIKIT:NOT_ACCEPTABLE" >
+						<logger level="INFO" doc:name="Logger" doc:id="fb4b1e5f-5a78-4794-a35e-f20a5aeeecac" message='#["bad request"]' />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="26ba2c4a-ad25-4bbd-9a67-a8842016a0f1" actual="#[payload.status]" expected='#["FAILURE"]' />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="end-to-end-github-actions-flow-test-suite-end-to-end-github-actions-flow-mainTest4" doc:id="6baff1c0-fcc1-4280-9a61-d63a8fdc4627" description="Test" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="ff7862a8-0093-4c8b-a718-d22183fe5436" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="end-to-end-github-actions-flow-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="e6ea3b0c-0bde-4ccd-a0d5-c309f5a650ee" >
+				<flow-ref doc:name="Flow-ref to end-to-end-github-actions-flow-main" doc:id="ce68954d-8927-4b7e-9910-3c621970e704" name="end-to-end-github-actions-flow-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="5b267cae-03f6-488f-9dce-247c607606ff" type="APIKIT:UNSUPPORTED_MEDIA_TYPE" >
+						<logger level="INFO" doc:name="Logger" doc:id="f8f9b593-66d3-4d63-951e-26513c60bebb" message='#["bad request"]' />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="7f473dc2-2d4f-4ed3-b61f-1b42d4ee894f" actual="#[payload.status]" expected='#["FAILURE"]' />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="end-to-end-github-actions-flow-test-suite-end-to-end-github-actions-flow-mainTest5" doc:id="43121450-7092-414f-9820-ed01e8cc5665" description="Test" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="f2de3b5a-ba6d-41e2-bbbb-fd9da5fa1ddc" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="end-to-end-github-actions-flow-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_IMPLEMENTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="da5c56f4-b0c7-48b2-9e30-930857989d4c" >
+				<flow-ref doc:name="Flow-ref to end-to-end-github-actions-flow-main" doc:id="2a16a66f-c401-4ba2-bfba-ef2de6182e33" name="end-to-end-github-actions-flow-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="3300ee7f-f68a-4571-bb77-c9d6a5ffc7d1" type="APIKIT:NOT_IMPLEMENTED" >
+						<logger level="INFO" doc:name="Logger" doc:id="6775f9db-fecd-4a54-8920-f033dab71693" message='#["bad request"]' />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="c3ec1584-0728-4444-93d2-d0101cea17c8" actual="#[payload.status]" expected='#["FAILURE"]' />
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
